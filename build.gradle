@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.0-beta-4584'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.1.RELEASE")
+    }
+}
+
+group 'events'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+jar {
+    baseName = 'events'
+    version = '0.0.1'
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4584'
+
+    compile "org.springframework.boot:spring-boot-starter-web:1.3.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-jdbc:1.3.1.RELEASE"
+    compile "org.postgresql:postgresql:9.3-1102-jdbc41"
+    compile "org.flywaydb:flyway-core:3.2.1"
+
+    compile "io.springfox:springfox-swagger2:2.0.0"
+    compile "io.springfox:springfox-swagger-ui:2.0.0"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.hamcrest:hamcrest-library:1.3"
+    testCompile "org.mockito:mockito-core:2.0.36-beta"
+}
+
+sourceSets {
+    main {
+        resources.srcDir 'src/resources'
+        java.srcDir 'src'
+    }
+    test {
+        resources.srcDir 'test/resources'
+        java.srcDir 'test'
+    }
+}
